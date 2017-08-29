@@ -2,12 +2,12 @@
 namespace GDO\Currency;
 
 use GDO\DB\GDO;
-use GDO\DB\GDO_UpdatedAt;
-use GDO\Type\GDO_Char;
-use GDO\Type\GDO_Checkbox;
-use GDO\Type\GDO_Decimal;
-use GDO\Type\GDO_Int;
-use GDO\Type\GDO_String;
+use GDO\DB\GDT_UpdatedAt;
+use GDO\Type\GDT_Char;
+use GDO\Type\GDT_Checkbox;
+use GDO\Type\GDT_Decimal;
+use GDO\Type\GDT_Int;
+use GDO\Type\GDT_String;
 /**
  * @author gizmore
 */
@@ -21,12 +21,12 @@ final class Currency extends GDO
 	public function gdoColumns()
 	{
 		return array(
-			GDO_Char::make('ccy_iso')->ascii()->caseS()->size(3)->primary(),
-			GDO_String::make('ccy_symbol')->max(3)->notNull(),
-			GDO_Int::make('ccy_digits')->bytes(1)->unsigned()->min(1)->max(4),
-			GDO_Decimal::make('ccy_ratio')->digits(6, 6),
-			GDO_Checkbox::make('ccy_auto_update')->initial('1'),
-			GDO_UpdatedAt::make('ccy_updated_at'),
+			GDT_Char::make('ccy_iso')->ascii()->caseS()->size(3)->primary(),
+			GDT_String::make('ccy_symbol')->max(3)->notNull(),
+			GDT_Int::make('ccy_digits')->bytes(1)->unsigned()->min(1)->max(4),
+			GDT_Decimal::make('ccy_ratio')->digits(6, 6),
+			GDT_Checkbox::make('ccy_auto_update')->initial('1'),
+			GDT_UpdatedAt::make('ccy_updated_at'),
 		);
 	}
 

@@ -2,10 +2,10 @@
 namespace GDO\Currency;
 
 use GDO\Core\Module;
-use GDO\Date\GDO_Duration;
-use GDO\Date\GDO_Timestamp;
+use GDO\Date\GDT_Duration;
+use GDO\Date\GDT_Timestamp;
 use GDO\Date\Time;
-use GDO\Type\GDO_String;
+use GDO\Type\GDT_String;
 /**
  * Builds a list of currency and conversion rates.
  * Updates them via cronnjob.
@@ -28,9 +28,9 @@ final class Module_Currency extends Module
 	public function getConfig()
 	{
 		return array(
-			GDO_Timestamp::make('ccy_last_try')->initial(0),
-			GDO_String::make('ccy_last_sync'),
-			GDO_Duration::make('ccy_update_fqcy')->initial(Time::ONE_HOUR),
+			GDT_Timestamp::make('ccy_last_try')->initial(0),
+			GDT_String::make('ccy_last_sync'),
+			GDT_Duration::make('ccy_update_fqcy')->initial(Time::ONE_HOUR),
 		);
 	}
 	public function cfgUpdateEnabled() { return $this->cfgUpdateFrequency() > 0; }
