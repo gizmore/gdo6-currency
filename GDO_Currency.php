@@ -11,7 +11,7 @@ use GDO\Type\GDT_String;
 /**
  * @author gizmore
 */
-final class Currency extends GDO
+final class GDO_Currency extends GDO
 {
 // 	public function gdoCached() { return false; }
 	

@@ -1,7 +1,7 @@
 <?php
 namespace GDO\Currency;
 
-use GDO\Core\Module;
+use GDO\Core\GDO_Module;
 use GDO\Date\GDT_Duration;
 use GDO\Date\GDT_Timestamp;
 use GDO\Date\Time;
@@ -13,14 +13,14 @@ use GDO\Type\GDT_String;
  * @author gizmore
  * @version 5.00
  */
-final class Module_Currency extends Module
+final class Module_Currency extends GDO_Module
 {
 	##############
 	### Module ###
 	##############
 	public $module_priority = 10;
 	public function onLoadLanguage() { return $this->loadLanguage('lang/currency'); }
-	public function getClasses() { return array('GDO\Currency\Currency'); }
+	public function getClasses() { return array('GDO\Currency\GDO_Currency'); }
 
 	##############
 	### Config ###

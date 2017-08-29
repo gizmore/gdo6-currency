@@ -2,7 +2,7 @@
 namespace GDO\Currency\Method;
 
 use GDO\Cronjob\MethodCronjob;
-use GDO\Currency\Currency;
+use GDO\Currency\GDO_Currency;
 use GDO\Currency\Module_Currency;
 
 final class Cronjob extends MethodCronjob
@@ -48,9 +48,9 @@ final class Cronjob extends MethodCronjob
 	
 	private static function syncCurrency(Module_Currency $module, string $iso, string $rate)
 	{
-		if (!($currency = Currency::getByISO($iso)))
+	    if (!($currency = GDO_Currency::getByISO($iso)))
 		{
-			$currency = Currency::blank(['ccy_iso'=>$iso, 'ccy_ratio'=>$rate, 'ccy_symbol'=>$iso]);
+		    $currency = GDO_Currency::blank(['ccy_iso'=>$iso, 'ccy_ratio'=>$rate, 'ccy_symbol'=>$iso]);
 		}
 		
 		if ($currency->isSyncAutomated())
