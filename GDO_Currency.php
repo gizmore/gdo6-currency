@@ -1,13 +1,12 @@
 <?php
 namespace GDO\Currency;
-
 use GDO\DB\GDO;
-use GDO\DB\GDT_UpdatedAt;
 use GDO\Type\GDT_Char;
 use GDO\Type\GDT_Checkbox;
 use GDO\Type\GDT_Decimal;
 use GDO\Type\GDT_Int;
 use GDO\Type\GDT_String;
+use GDO\DB\GDT_EditedAt;
 /**
  * @author gizmore
 */
@@ -26,7 +25,7 @@ final class GDO_Currency extends GDO
 			GDT_Int::make('ccy_digits')->bytes(1)->unsigned()->min(1)->max(4),
 			GDT_Decimal::make('ccy_ratio')->digits(6, 6),
 			GDT_Checkbox::make('ccy_auto_update')->initial('1'),
-			GDT_UpdatedAt::make('ccy_updated_at'),
+			GDT_EditedAt::make('ccy_updated_at'),
 		);
 	}
 
