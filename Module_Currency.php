@@ -5,7 +5,7 @@ use GDO\Core\GDO_Module;
 use GDO\Date\GDT_Duration;
 use GDO\Date\GDT_Timestamp;
 use GDO\Date\Time;
-use GDO\Type\GDT_String;
+use GDO\DB\GDT_String;
 /**
  * Builds a list of currency and conversion rates.
  * Updates them via cronnjob.

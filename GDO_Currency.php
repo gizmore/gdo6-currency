@@ -1,11 +1,11 @@
 <?php
 namespace GDO\Currency;
 use GDO\Core\GDO;
-use GDO\Type\GDT_Char;
-use GDO\Type\GDT_Checkbox;
-use GDO\Type\GDT_Decimal;
-use GDO\Type\GDT_Int;
-use GDO\Type\GDT_String;
+use GDO\DB\GDT_Char;
+use GDO\DB\GDT_Checkbox;
+use GDO\DB\GDT_Decimal;
+use GDO\DB\GDT_Int;
+use GDO\DB\GDT_String;
 use GDO\DB\GDT_EditedAt;
 /**
  * @author gizmore
