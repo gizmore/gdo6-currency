@@ -1,6 +1,6 @@
 <?php
 namespace GDO\Currency;
-use GDO\DB\GDO;
+use GDO\Core\GDO;
 use GDO\Type\GDT_Char;
 use GDO\Type\GDT_Checkbox;
 use GDO\Type\GDT_Decimal;
