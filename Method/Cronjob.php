@@ -1,9 +1,9 @@
 <?php
 namespace GDO\Currency\Method;
 
-use GDO\Core\MethodCronjob;
 use GDO\Currency\GDO_Currency;
 use GDO\Currency\Module_Currency;
+use GDO\Cronjob\MethodCronjob;
 
 final class Cronjob extends MethodCronjob
 {
