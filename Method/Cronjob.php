@@ -4,6 +4,7 @@ namespace GDO\Currency\Method;
 use GDO\Currency\GDO_Currency;
 use GDO\Currency\Module_Currency;
 use GDO\Cronjob\MethodCronjob;
+use GDO\Core\Application;
 
 final class Cronjob extends MethodCronjob
 {
@@ -21,10 +22,10 @@ final class Cronjob extends MethodCronjob
 		
 		$frequency = $module->cfgUpdateFrequency();
 		$lastTry = round($module->cfgLastTry() / $frequency);
-		$nowTry = round(time() / $frequency);
+		$nowTry = round(Application::$TIME / $frequency);
 		if ($lastTry !== $nowTry)
 		{
-			$module->saveConfigValue('ccy_last_try', time());
+			$module->saveConfigValue('ccy_last_try', Application::$TIME);
 			$this->syncCurrencies($module);
 		}
 	}
