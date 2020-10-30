@@ -20,7 +20,7 @@ final class GDO_Currency extends GDO
 	public function gdoColumns()
 	{
 		return array(
-			GDT_Char::make('ccy_iso')->ascii()->caseS()->size(3)->primary(),
+			GDT_Char::make('ccy_iso')->ascii()->caseS()->length(3)->primary(),
 			GDT_String::make('ccy_symbol')->max(3)->notNull(),
 			GDT_Int::make('ccy_digits')->bytes(1)->unsigned()->min(1)->max(4),
 			GDT_Decimal::make('ccy_ratio')->digits(6, 6),
