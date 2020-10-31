@@ -30,7 +30,7 @@ final class Module_Currency extends GDO_Module
 		return array(
 			GDT_Timestamp::make('ccy_last_try')->initial(0),
 			GDT_String::make('ccy_last_sync'),
-			GDT_Duration::make('ccy_update_fqcy')->initial(Time::ONE_HOUR),
+			GDT_Duration::make('ccy_update_fqcy')->initial("1h"),
 		);
 	}
 	public function cfgUpdateEnabled() { return $this->cfgUpdateFrequency() > 0; }
