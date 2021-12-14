@@ -7,12 +7,13 @@ use GDO\DB\GDT_Decimal;
 use GDO\DB\GDT_Int;
 use GDO\DB\GDT_String;
 use GDO\DB\GDT_EditedAt;
+use function False\true;
 /**
  * @author gizmore
 */
 final class GDO_Currency extends GDO
 {
-// 	public function gdoCached() { return false; }
+	public function gdoCached() { return true; }
 	
 	###########
 	### GDO ###
@@ -32,14 +33,22 @@ final class GDO_Currency extends GDO
 	##############
 	### Getter ###
 	##############
+	public function getRatio() { return $this->getVar('ccy_ratio'); }
+	public function getDigits() { return $this->getVar('ccy_digits'); }
 	public function getSymbol() { return $this->getVar('ccy_symbol'); }
 	public function isSyncAutomated() { return $this->getVar('ccy_auto_update') === '1'; }
 
 	################
 	### Display ####
 	################
-	public function displayValue($value, $with_symbol=true) { return sprintf('%s%.02f'.$this->getVar('curr_digits').'f', $with_symbol ? $this->getSymbol().'' : '', $value); }
-
+	public function displayName() { return $this->displayValue($this->getRatio(), true); }
+	public function displayValue($value, $with_symbol=true)
+	{
+		return sprintf('%s%.0'.$this->getDigits().'f',
+			$with_symbol ? $this->getSymbol().' ' : '',
+			$value);
+	}
+	
 	###############
 	### Factory ###
 	###############
