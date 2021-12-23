@@ -52,7 +52,7 @@ final class Module_Currency extends GDO_Module
 	/**
 	 * @return GDO_Currency[]
 	 */
-	public function cfgSupported() { return $this->getConfigValaue('ccy_supported'); }
+	public function cfgSupported() { return $this->getConfigValue('ccy_supported'); }
 	public function cfgUpdateFrequency() { return $this->getConfigVar('ccy_update_fqcy'); }
 	
 }
