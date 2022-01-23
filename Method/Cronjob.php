@@ -6,14 +6,19 @@ use GDO\Currency\Module_Currency;
 use GDO\Cronjob\MethodCronjob;
 
 /**
- * Sync currencies with EZB.
+ * Hourly sync currencies with EZB.
  * 
  * @author gizmore
- * @version 6.11.1
+ * @version 6.11.3
  * @since 6.4.0
  */
 final class Cronjob extends MethodCronjob
 {
+	public function runAt()
+	{
+		return Module_Currency::instance()->cfgUpdateFrequency();
+	}
+	
 	public function run()
 	{
 		$module = Module_Currency::instance();

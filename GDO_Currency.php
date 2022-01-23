@@ -1,15 +1,24 @@
 <?php
 namespace GDO\Currency;
+
 use GDO\Core\GDO;
 use GDO\DB\GDT_Char;
 use GDO\DB\GDT_Checkbox;
 use GDO\DB\GDT_Decimal;
-use GDO\DB\GDT_Int;
 use GDO\DB\GDT_String;
 use GDO\DB\GDT_EditedAt;
-use function False\true;
+use GDO\DB\GDT_UInt;
+
 /**
+ * A currency. Primary key is  the 3 letter ISO in uppercase.
+ * Can convert to credits.
+ * Can convert between currencies.
+ * 
+ * @TODO: implement currency conversion.
+ * 
  * @author gizmore
+ * @version 6.11.3
+ * @since 6.8.0
 */
 final class GDO_Currency extends GDO
 {
@@ -20,14 +29,14 @@ final class GDO_Currency extends GDO
 	###########
 	public function gdoColumns()
 	{
-		return array(
+		return [
 			GDT_Char::make('ccy_iso')->ascii()->caseS()->length(3)->primary(),
 			GDT_String::make('ccy_symbol')->max(3)->notNull(),
-			GDT_Int::make('ccy_digits')->bytes(1)->unsigned()->min(1)->max(4),
+			GDT_UInt::make('ccy_digits')->bytes(1)->min(1)->max(4),
 			GDT_Decimal::make('ccy_ratio')->digits(6, 6),
 			GDT_Checkbox::make('ccy_auto_update')->initial('1'),
 			GDT_EditedAt::make('ccy_updated_at'),
-		);
+		];
 	}
 
 	##############
@@ -52,14 +61,6 @@ final class GDO_Currency extends GDO
 	###############
 	### Factory ###
 	###############
-// 	/**
-// 	* Return all available ISOs.
-// 	*/
-// 	public static function getISOs()
-// 	{
-// 		return self::table()->selectColumn('curr_iso');
-// 	}
-
 	/**
 	 * @param string $iso
 	 * @return self
@@ -72,8 +73,19 @@ final class GDO_Currency extends GDO
 	##################
 	### Conversion ###
 	##################
-	public static function convert($value, $from, $to)
+	public function toCredits($money)
+	{
+		return floor($money * 100.0);
+	}
+	
+	public function toMoney($credits)
+	{
+		return round($credits/100.0, $this->getDigits());
+	}
+	
+	public static function convertCurrency($value, $from, $to)
 	{
 
 	}
+	
 }
