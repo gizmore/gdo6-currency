@@ -80,7 +80,9 @@ final class GDO_Currency extends GDO
 	
 	public function toMoney($credits)
 	{
-		return round($credits/100.0, $this->getDigits());
+		$money = $credits / 100.0;
+		$digits = $this->getDigits();
+		return sprintf("%.0{$digits}f", $money);
 	}
 	
 	public static function convertCurrency($value, $from, $to)

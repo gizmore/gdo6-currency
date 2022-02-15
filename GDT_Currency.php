@@ -6,6 +6,7 @@ use GDO\DB\GDT_ObjectSelect;
 /**
  * Currency selection.
  * 
+ * @see GDO_Currency
  * @author gizmore
  * @version 6.11.3
  * @since 6.8.0
